@@ -13,15 +13,8 @@
  * 
 */
 
-/**
- * Define Global Variables
- * 
-*/
-
-/*global variable, selects ID by the name of "navbar_list" from HTML document.*/
+/*define global variables*/
 const navBarMenu = document.getElementById ('navbar__list');
-
-/*global variable, selects all the "sections" in HTML doc*/
 const components = document.querySelectorAll ('section');
 
 /*list of item*/
