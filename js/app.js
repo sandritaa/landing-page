@@ -21,24 +21,6 @@ const components = document.querySelectorAll('section');
 /*list of items*/
 const numberOfItems = components.length;
 
-/*navbar additions*/
-function barAdditions(){
-    
-    for (let i = 0; i < numberOfItems; i++) { 
-    
-        const liExtra = document.createElement('li');
-        liExtra.className = 'menu__link'; 
-
-        const name = components[i].dataset.nav;
-        const textName = document.createTextNode(name);
-
-        navBarMenu.appendChild(liExtra);
-        liExtra.appendChild(textName);
-    }
-}
-
-barAdditions()
-
 /*addition of active and non- active classes */
 function activeSearch(){
     for (let i = 0; i < numberOfItems; i++){
@@ -53,8 +35,31 @@ function activeSearch(){
     }
 }
 
-/* creating the scroll and click event listeners */
-
+/* creating the scroll event listener */
 document.addEventListener('scroll', activeSearch);
 
-navBarMenu.addEventListener('click', activeSearch);
+/*navbar additions*/
+function barAdditions(){
+    
+    for (let i = 0; i < numberOfItems; i++) { 
+    
+        const liExtra = document.createElement('li');
+        liExtra.className = 'menu__link'; 
+        
+        /* creating the click event listener */
+        liExtra.addEventListener('click', 
+        function() {
+            components[i].scrollIntoView({behavior: 'smooth'});
+            activeSearch();
+        })
+
+        const name = components[i].dataset.nav;
+        const textName = document.createTextNode(name);
+
+        navBarMenu.appendChild(liExtra);
+        liExtra.appendChild(textName);
+
+    }
+}
+
+barAdditions()
