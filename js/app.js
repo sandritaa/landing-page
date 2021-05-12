@@ -13,87 +13,54 @@
  * 
 */
 
-// /*define global variables*/
-// const navBarMenu = document.getElementById('navbar__list');
-// const components = document.querySelectorAll('section');
-// debugger;
-// /*list of item*/
-// let numberOfItems = components.length;
-
-// /*add elements to the navbar*/
-// for (let i=0; i<numberOfItems; i++) { 
-    
-//     let componentId = components[i].getAttribute('id')
-//     let componentName = components[i].getAttribute('data-nav')
-
-//     let allTogether = document.createElement('li')
-
-//     allTogether.innerHTML = `<a class='menu__link' href='#${componentId}'>${componentName}</a>`
-//     navBarMenu.appendChild(allTogether);
-// }
-
-// for (let i=0; i<numberOfItems; i++){
-    
-//     let componentId = components[i].getAttribute('id')
-
-//     let position = document.getElementById(componentId).getBoundingClientRect().top;
-//      if (position < 150 && position > -150) {
-//         components[i].classList.add('section.your-active-class');
-//     }
-//     else {
-//         components[i].classList.remove('section.your-active-class');
-//     }
-// }
-
-
-
 /*define global variables*/
 const navBarMenu = document.getElementById('navbar__list');
 const components = document.querySelectorAll('section');
 
-/*list of item*/
-let numberOfItems = components.length;
+/*list of items*/
+const numberOfItems = components.length;
 
-/*add elements to the navbar*/
-function landingAdditions(){
+/*navbar additions*/
+function barAdditions(){
     
-for (let i=0; i<numberOfItems; i++) { 
+    for (let i = 0; i < numberOfItems; i++) { 
     
-    var aExtra = document.createElement('a'); 
+        const aExtra = document.createElement('a'); 
 
-    aExtra.href = '#'+ components[i].id;
+        aExtra.href = '#' + components[i].id;
 
-    const liExtra = document.createElement('li'); 
+        const liExtra = document.createElement('li'); 
 
-    let name = components[i].dataset.title;
+        const name = components[i].dataset.nav;
 
-    let textName = document.createTextNode(name)
+        const textName = document.createTextNode(name);
 
-    navBarMenu.appendChild(aExtra);
+        navBarMenu.appendChild(aExtra);
 
-    aExtra.appendChild(liExtra);
+        aExtra.appendChild(liExtra);
 
-    liExtra.appendChild(textName);
-
+        liExtra.appendChild(textName);
     }
 }
 
-landingAdditions()
+barAdditions()
 
+//addition of active and non- active classes 
 function activeSearch(){
     for (let i = 0; i < numberOfItems; i++){
         let topScreenDistance = components[i].getBoundingClientRect().top;     
-        if (topScreenDistance <=  150 && topScreenDistance >= -150 ){
-            components[i].className = "your-active-class"
+        
+        if (topScreenDistance <=  150 && topScreenDistance >= -150){
+            components[i].className = 'your-active-class';
         }
         else {
-            components[i].className = ""
+            components[i].className = '';
         }
     }
 }
 
+/* creating the scroll and click event listeners */
 
-document.addEventListener("scroll", activeSearch)
+document.addEventListener('scroll', activeSearch);
 
-ulNavBar.addEventListener("click", activeSearch)
-
+navBarMenu.addEventListener('click', activeSearch);
