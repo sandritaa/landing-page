@@ -74,11 +74,10 @@ section {
 
 .navbar__menu li {
     display: inline-block;
-    padding-left: 20px;
 }
 
 .navbar__menu .menu__link {
-    display: block;
+    display: inline-block;
     padding: 6px;
     font-weight: bold;
     text-decoration: none;

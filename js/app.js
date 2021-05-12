@@ -26,16 +26,13 @@ function barAdditions(){
     
     for (let i = 0; i < numberOfItems; i++) { 
     
-        const aExtra = document.createElement('a'); 
-        aExtra.href = '#' + components[i].id;
-
-        const liExtra = document.createElement('li'); 
+        const liExtra = document.createElement('li');
+        liExtra.className = 'menu__link'; 
 
         const name = components[i].dataset.nav;
         const textName = document.createTextNode(name);
 
-        navBarMenu.appendChild(aExtra);
-        aExtra.appendChild(liExtra);
+        navBarMenu.appendChild(liExtra);
         liExtra.appendChild(textName);
     }
 }
