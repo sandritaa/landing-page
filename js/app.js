@@ -55,6 +55,8 @@ const components = document.querySelectorAll('section');
 let numberOfItems = components.length;
 
 /*add elements to the navbar*/
+function landingAdditions(){
+    
 for (let i=0; i<numberOfItems; i++) { 
     
     var aExtra = document.createElement('a'); 
@@ -73,26 +75,25 @@ for (let i=0; i<numberOfItems; i++) {
 
     liExtra.appendChild(textName);
 
-    
-
-    let componentId = components[i].getAttribute('id')
-    let componentName = components[i].getAttribute('data-nav')
-
-    let allTogether = document.createElement('li')
-
-    allTogether.innerHTML = `<a class='menu__link' href='#${componentId}'>${componentName}</a>`
-    navBarMenu.appendChild(allTogether);
-}
-
-for (let i=0; i<numberOfItems; i++){
-    
-    let componentId = components[i].getAttribute('id')
-
-    let position = document.getElementById(componentId).getBoundingClientRect().top;
-     if (position < 150 && position > -150) {
-        components[i].classList.add('section.your-active-class');
-    }
-    else {
-        components[i].classList.remove('section.your-active-class');
     }
 }
+
+landingAdditions()
+
+function activeSearch(){
+    for (let i = 0; i < numberOfItems; i++){
+        let topScreenDistance = components[i].getBoundingClientRect().top;     
+        if (topScreenDistance <=  150 && topScreenDistance >= -150 ){
+            components[i].className = "your-active-class"
+        }
+        else {
+            components[i].className = ""
+        }
+    }
+}
+
+
+document.addEventListener("scroll", activeSearch)
+
+ulNavBar.addEventListener("click", activeSearch)
+
