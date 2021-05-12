@@ -57,6 +57,24 @@ let numberOfItems = components.length;
 /*add elements to the navbar*/
 for (let i=0; i<numberOfItems; i++) { 
     
+    var aExtra = document.createElement('a'); 
+
+    aExtra.href = '#'+ components[i].id;
+
+    const liExtra = document.createElement('li'); 
+
+    let name = components[i].dataset.title;
+
+    let textName = document.createTextNode(name)
+
+    navBarMenu.appendChild(aExtra);
+
+    aExtra.appendChild(liExtra);
+
+    liExtra.appendChild(textName);
+
+    
+
     let componentId = components[i].getAttribute('id')
     let componentName = components[i].getAttribute('data-nav')
 
