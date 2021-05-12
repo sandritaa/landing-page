@@ -15,6 +15,7 @@
 
 /*define global variables*/
 const navBarMenu = document.getElementById('navbar__list');
+
 const components = document.querySelectorAll('section');
 
 /*list of items*/
@@ -26,26 +27,22 @@ function barAdditions(){
     for (let i = 0; i < numberOfItems; i++) { 
     
         const aExtra = document.createElement('a'); 
-
         aExtra.href = '#' + components[i].id;
 
         const liExtra = document.createElement('li'); 
 
         const name = components[i].dataset.nav;
-
         const textName = document.createTextNode(name);
 
         navBarMenu.appendChild(aExtra);
-
         aExtra.appendChild(liExtra);
-
         liExtra.appendChild(textName);
     }
 }
 
 barAdditions()
 
-//addition of active and non- active classes 
+/*addition of active and non- active classes */
 function activeSearch(){
     for (let i = 0; i < numberOfItems; i++){
         let topScreenDistance = components[i].getBoundingClientRect().top;     
